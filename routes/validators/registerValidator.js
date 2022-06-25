@@ -1,20 +1,23 @@
 const { check } = require('express-validator')
 
 module.exports = [
+    check('phone')
+    .exists().withMessage('Số điện thoại không được để trống')
+    .notEmpty().withMessage('Số điện thoại không được để trống')
+    .isNumeric().withMessage('Số điện thoại không hợp lệ'),
     check('email')
-    .exists().withMessage('Vui lòng cung cấp địa chỉ email')
-    .notEmpty().withMessage('Địa chỉ email không được để trống')
-    .isEmail().withMessage('Địa chỉ email không hợp lệ'),
-
-    check('password')
-    .exists().withMessage('Vui lòng cung cấp mật khẩu')
-    .notEmpty().withMessage('Mật khẩu không được để trống')
-    .isLength({min: 6}).withMessage('Mất khẩu phải có ít nhất 6 ký tự')
-    .isLength({max: 30}).withMessage('Mất khẩu không được quá 30 kí tự'),
-
+    .exists().withMessage('Email không được để trống')
+    .notEmpty().withMessage('Email không để trống')
+    .isEmail().withMessage('Email không hợp lệ'),
     check('fullname')
-    .exists().withMessage('Vui lòng cung cấp tên người dùng')
-    .notEmpty().withMessage('Tên người dùng không được để trống')
-    .isLength({min: 6}).withMessage('Tên người dùng phải có ít nhất 6 ký tự')
-
+    .exists().withMessage('Họ và tên không được để trống')
+    .notEmpty().withMessage('Họ và tên không được để trống')
+    .isLength({ min: 5 }).withMessage('họ và tên phải có ít nhất 6 ký tự'),
+    check('birthday')
+    .exists().withMessage('Ngày sinh không được để trống')
+    .notEmpty().withMessage('Ngày sinh không được để trống'),
+    check('address')
+    .exists().withMessage('Địa chỉ không được để trống')
+    .notEmpty().withMessage('Địa chỉ không được để trống')
+    .isLength({ min: 6 }).withMessage('Địa chỉ phải có ít nhất 6 ký tự'),
 ]

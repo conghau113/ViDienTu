@@ -22,16 +22,17 @@
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
-            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">E-WALLET</span> </a>
+            <div> <a href="/" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">E-WALLET</span> </a>
                 <div class="nav_list">
                     <a href="/" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Trang chủ</span> </a> 
                     <a href="/profile" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Trang cá nhân</span> </a> 
                     <a href="/naptien" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Nạp tiền</span> </a> 
                     <a href="/ruttien" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Rút tiền</span> </a> 
                     <a href="/chuyentien" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Chuyển tiền</span> </a> 
-                    <a href="/muacard" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Mua thẻ cào</span> </a> </div>
+                    <a href="/muacard" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Mua thẻ cào</span> </a> 
+                </div>
             </div>
-            <a class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name" onclick="logout()">SignOut</span> </a>
+            <a class="nav_link signout_cursor" onclick="logout()"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
         </nav>
     </div>
     <!--Container Main start-->
@@ -44,28 +45,53 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Loại giao dịch</th>
-                    <th scope="col">Thời gian</th>
-                    <th scope="col">Số tiền</th>
-                    <th scope="col">Phí</th>
-                    <th scope="col">Thông tin</th>
-                    <th scope="col">Ghi chú</th>
-                    <th scope="col">Trạng thái</th>
+                    <th scope="col">LOẠI GIAO DỊCH</th>
+                    <th scope="col">THỜI GIAN</th>
+                    <th scope="col">SỐ TIỀN</th>
+                    <th scope="col">PHÍ</th>
+                    <th scope="col">THÔNG TIN</th>
+                    <th scope="col">GHI CHÚ</th>
+                    <th scope="col">TRẠNG THÁI</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="table-primary">
-                    <th scope="row">1</th>
-                    <td>Nạp tiền</td>
-                    <td>29/05/2022</td>
-                    <td>200000đ</td>
-                    <td>10000đ</td>
-                    <td></td>
-                    <td>Nạp tiền 20000đ</td>
-                    <td >
-                        <span class="badge bg-success "> Thành công</span>
-                    </td>
-                  </tr>
+                    <% Object.entries(history).forEach(e => { %>
+                        <% const [key, value] = e %>
+                        <tr class="table-primary">
+                            <th scope="row"><%= key %></th>
+                            <td>
+                                <%if(value.typeTransaction === 1){ %>
+                                    Nạp tiền
+                                <%} else if(value.typeTransaction === 2){ %>
+                                    Rút tiền
+                                <%} else if(value.typeTransaction === 3){ %>
+                                    Chuyển tiền
+                                <%} else if(value.typeTransaction === 4){ %>
+                                    Nhận tiền
+                                <%} else{ %>
+                                    Mua thẻ
+                                <% } %>
+                            </td>
+                            <td><%= value.dateTime.toLocaleDateString() %></td>
+                            <td><%= value.money %> đ</td>
+                            <td><%= value.fee %> đ</td>
+                            <td>
+                                <% (value.code).forEach(e=>{ %>
+                                    <span>Mã thẻ: <%= e %></span></br>
+                                <%})%>
+                            </td>
+                            <td><%= value.note %></td>
+                            <td >
+                                <% if(value.statusTransaction === 1){ %>
+                                    <span class="badge bg-success "> Thành công</span>
+                                <%} else if(value.statusTransaction === 2){ %>
+                                    <span class="badge bg-warning "> Chờ duyệt</span>
+                                <%} else{ %>
+                                    <span class="badge bg-danger "> Hủy</span>
+                                <%}%>
+                            </td>
+                        </tr>
+                    <% }) %>
                 </tbody>
             </table>
         </div>

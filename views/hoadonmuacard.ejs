@@ -23,7 +23,7 @@
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
-            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">E-WALLET</span> </a>
+            <div> <a href="/" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">E-WALLET</span> </a>
                 <div class="nav_list">
                     <a href="/" class="nav_link "> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Trang chủ</span> </a> 
                     <a href="/profile" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Trang cá nhân</span> </a> 
@@ -49,12 +49,9 @@
                     <th scope="col">Mệnh giá</th>
                     <th scope="col">Số lượng</th>
                     <th scope="col">Mã thẻ</th>
-    
                   </tr>
                 </thead>
                 <tbody>
-                    
-                
                   <tr class="table-primary">
                     <th scope="row">1</th>
                     <td>
@@ -67,17 +64,15 @@
                         <%}%>
                     </td>
                     <td><%=history.value%></td>
-                    <td>    
+                    <td>
                        <%=history.code.length%>
                     </td>
-                    <td>    
+                    <td>
                         <%(history.code).forEach(e=>{%>
                             <span><%=e%></span></br>
                         <%})%>
                     </td>
-                    
                   </tr>
-                 
                 </tbody>
             </table>
             <a class="btn btn-secondary" href="/muacard">

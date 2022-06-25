@@ -22,7 +22,7 @@
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
-            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">E-WALLET</span> </a>
+            <div> <a href="/" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">E-WALLET</span> </a>
                 <div class="nav_list">
                     <a href="/" class="nav_link "> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Trang chủ</span> </a> 
                     <a href="/profile" class="nav_link active"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Trang cá nhân</span> </a> 
@@ -30,8 +30,8 @@
                     <a href="/ruttien" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Rút tiền</span> </a> 
                     <a href="/chuyentien" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Chuyển tiền</span> </a> 
                     <a href="/muacard" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Mua thẻ cào</span> </a> </div>
-            </div>
-            <a class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name" onclick="logout()">SignOut</span> </a>
+                </div>
+                <a class="nav_link signout_cursor" onclick="logout()"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
         </nav>
     </div>
     <div class="container">
@@ -53,52 +53,52 @@
                                     </div>
                                     <div class="form-row m-2">
                                         <div class="col mr-4">
-                                            <label>Mã nhân viên</label>
-                                            <input type="text" class="form-control"  readonly>
+                                            <label>Trạng thái tài khoản:</label>
+                                            <!-- <input type="text" class="form-control" value="<%= user.status %>"  readonly> -->
+                                            <div>
+                                                <% if(user.status === "waitConfirm"){ %>
+                                                    <span class="badge bg-warning ">Chờ xác minh</span>
+                                                <% }else if(user.status === "confirm") { %>
+                                                    <span class="badge bg-success ">Đã xác minh</span>
+                                                <% } else{ %>
+                                                    <span class="badge bg-danger ">Hủy</span>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                        <div class="col mr-4">
+                                            <label>Họ và tên:</label>
+                                            <input type="text" class="form-control" value="<%= user.fullname %>"  readonly>
                                         </div>
                                         <div class="col">
-                                            <label>Username</label>
-                                            <input type="text" class="form-control" readonly>
+                                            <label>Email:</label>
+                                            <input type="text" class="form-control" value="<%= user.email %>" readonly>
                                         </div>
                                     </div>
                                     <div class="form-row m-2">
                                         <div class="col mr-4">
-                                            <label>Chức vụ</label>
-                                            <input type="text" class="form-control" readonly>
+                                            <label>Số điện thoại</label>
+                                            <input type="text" class="form-control" value="<%= user.phone %>" readonly>
                                         </div>
                                         <div class="col">
-                                            <label>Phòng ban</label>
-                                            <input type="text" class="form-control" readonly>
+                                            <label>Địa chỉ:</label>
+                                            <input type="text" class="form-control" value="<%= user.address %>" readonly>
                                         </div>
                                     </div>
-                                    <div class="form-row m-2">
-                                        <label> Email</label>
-                                        <input type="text" class="form-control" readonly>
+                                    <div class="row justify-content-start">
+                                        <div class="col-4 m-2 ">
+                                            <label>CMND mặt trước:</label>
+                                            <div class="card" >
+                                                <img src="/uploads/<%= user.cmndfront %>" class="card-img-top card_cmnd" alt="...">
+                                            </div>
+                                        </div>
+                                            <div class="col-4 m-2">
+                                                <label>CMND mặt sau:</label>
+                                                <div class="card">
+                                                    <img src="/uploads/<%= user.cmndback %>" class="card-img-top  card_cmnd" alt="...">
+                                                </div>
+                                            </div>
                                     </div>
-                                    <form method="post" action="" enctype="multipart/form-data" novalidate>
-                                        <div class="form-row m-2">
-                                            <label> Password</label>
-                                            <input type="password" class="form-control" name="pass_old" id="pass_old">
-                                            <span class="text-danger font-weight-bold">
-                                            </span>
-                                        </div>
-                                        <div class="form-row m-2">
-                                            <div class="col  mr-4">
-                                                <label>New Password</label>
-                                                <input type="password" class="form-control" name="pass_new" id="pass_new">
-                                                <span class="text-danger font-weight-bold">
-                                                </span>
-                                            </div>
-                                            <div class="col">
-                                                <label>Confirm Password</label>
-                                                <input type="password" class="form-control" name="pass_confirm" id="pass_confirm">
-                                                <span class="text-danger font-weight-bold">
-                                                </span>
-                                            </div>
-                                        </div>
-    
-                                        <button type="submit" class="m-2 btn btn-primary">Save changes</button>
-                                    </form>
+                                    <button type="submit" class="m-2 btn btn-primary">Save changes</button>
                                 </div>
                             </div>
                         </div>

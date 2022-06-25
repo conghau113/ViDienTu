@@ -22,7 +22,7 @@
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
-            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">E-WALLET</span> </a>
+            <div> <a href="/" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">E-WALLET</span> </a>
                 <div class="nav_list">
                     <a href="/" class="nav_link "> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Trang chủ</span> </a> 
                     <a href="/profile" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Trang cá nhân</span> </a> 
@@ -30,8 +30,8 @@
                     <a href="/ruttien" class="nav_link active"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Rút tiền</span> </a> 
                     <a href="/chuyentien" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Chuyển tiền</span> </a> 
                     <a href="/muacard" class="nav_link "> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Mua thẻ cào</span> </a> </div>
-            </div>
-            <a class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name" onclick="logout()">SignOut</span> </a>
+                </div>
+                <a class="nav_link signout_cursor" onclick="logout()"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
         </nav>
     </div>
     <!--Container Main start-->
@@ -42,7 +42,6 @@
             </div>
             <div class="card p-3">
                 <!-- <h3 class="text-danger">Rut tien thanh cong</h3> -->
-                <form action="" method="post" id="formRutTien">
                     <div class="form-group">
                       <label for="maSoThe">Mã số thẻ: </label>
                       <input type="text" class="form-control" id="maSoThe_Rut" name="maSoThe" required>
@@ -63,9 +62,16 @@
                         <label for="ghichu">Ghi chú:</label>
                         <textarea name="ghiChuRutTien" id="ghichu_Rut" class="h-100 form-control " placeholder="Nhập ghi chú.." rows="5"></textarea>
                     </div>
-                    <button onclick="rutTienSubmit()" class="btn btn-primary mt-3"  >Rút Tiền</button>
-                </form>
-            </div>
+
+                    <span class="text text-danger" id="err_signup"></span>
+                    <div class="form-group">
+                        <button onclick="rutTienSubmit()" class="btn btn-primary mt-3"  >Rút Tiền</button>
+                    </div>
+                </div>
+                <div class="alert alert-success alert-dismissible fade mt-3" role="alert" id="alert_login">
+                    <span id="success_login"></span>.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
         </div>
     </div>
     <!--Container Main end-->

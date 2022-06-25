@@ -22,45 +22,61 @@
                     <div class="text-center">
                         <h1>Register</h1>
                     </div>
-
+                <form action="" enctype="multipart/form-data" method="post">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Phone number</label>
-                        <input type="text" class="form-control" id="phone" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="phone" name="phone" value="<%= phone %>" aria-describedby="emailHelp">
                         <!-- <div class="valid-feedback">Valid.</div> -->
-                        <div class="valid-feedback">Số điện thoại không được để trống</div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="email" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="email" name="email" value="<%= email %>" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Fullname</label>
-                        <input type="text" class="form-control" id="fullname" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="fullname" name="fullname" value="<%= fullname %>" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Birthday</label>
-                        <input type="text" class="form-control" id="birthday" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="birthday" name="birthday" value="<%= birthday %>" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="address" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="address" name="address" value="<%= address %>" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">CMND Front</label>
-                        <input class="form-control" type="file" id="cmndfront">
+                        <input class="form-control" name="cmndfront" type="file" id="cmndfront" accept="image/*" required>
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">CMND Back</label>
-                        <input class="form-control" type="file" id="cmndback">
+                        <input class="form-control" type="file" name="cmndback" id="cmndback" accept="image/*"  required>
                     </div>
-                    <div class="mb-3 form-check">
+                    <div class="mb-3 mt-2">
+                        <% if (error.length > 0) { %>
+                            <span class="text text-danger fade show">
+                              <!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
+                                <%= error %>
+                            </span>
+                        <% } %>
+                    </div>
+                    <div class="mb-3 mt-2">
+                        <% if (msgSuccess.length > 0) { %>
+                            <span class="text text-success fade show">
+                              <!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
+                                <%= msgSuccess %>
+                            </span>
+                        <% } %>
+                    </div>
+                    <div class="mb-3">
                         <label class="form-check-label" for="exampleCheck1"><a href="/auth/login">Already have
                                 account? Login
                                 now!</a></label>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-primary" onclick="register()">Register</button>
+                        <button class="btn btn-primary" type="submit">Register</button>
                     </div>
+                </form>
                 </div>
             </div>
             <div class="col-md-3"></div>

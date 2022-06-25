@@ -10,46 +10,45 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" 
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="/js/main.js"></script>
 </head>
 
-<body>
+<body class="bg-secondary">
+    <!-- buộc toàn bộ dòng và cột phải bỏ trong class container -->
     <div class="container">
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="login-form m-5 p-3 bg-light border border-4 rounded">
-                    <div class="text-center">
-                        <h1>Sign In</h1>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" aria-describedby="emailHelp"
-                            name="username">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                    </div>
-
-                    <div class="mb-3 form-check">
-
-                        <label class="form-check-label" for="exampleCheck1"><a href="/auth/register">Have not
-                                account? Register
-                                now!</a></label>
-                    </div>
-                    <div class="text-center">
-                        <button class="btn btn-primary px-5" onclick="login()">Login</button>
-                    </div>
-                    <!-- <div class="form-group">
-                        <button class="btn btn-success px-5" type="submit">Login</button>
-                    </div> -->
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-5">
+          <div class="alert alert-success alert-dismissible fade mt-3" role="alert" id="alert_login">
+              <strong class="text-center">Thành công! </strong><span id="success_login"></span>.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <div class="border p-3 rounded bg-light mt-5">
+            <h3 class="text-center text-primary">User Login</h3>
+              <div class="form-grou">
+                <label for="user">Username: </label>
+                <div class="input-group mb-3">
+                  <input name="username" id="username" type="text" class="form-control" placeholder="username">
                 </div>
-            </div>
-            <div class="col-md-3"></div>
-        </div>
-    </div>
-</body>
+              </div>
+              <div class="form-group">
+                <label for="pass">Password: </label>
+                <div class="input-group mb-3">
+                  <input name="password" id="password" type="password" class="form-control" placeholder="Password">
+                </div>
+              </div>
 
+              <span class="text text-danger" id="err_signup"></span>
+
+              <div class="form-group float-end">
+                <button class="btn btn-primary px-5" onclick="login()">Login</button>
+              </div>
+              <div class="form-group">
+                <p>Don't have any account? <a href="/auth/register">Register now!</a></p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </html>

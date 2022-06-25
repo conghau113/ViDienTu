@@ -1,13 +1,10 @@
 const { check } = require('express-validator')
 
 module.exports = [
-    check('username')
-    .exists().withMessage('Vui lòng nhập tên người dùng')
-    .notEmpty().withMessage('Tên người dùng không được để trống'),
-
-    check('password')
-    .exists().withMessage('Vui lòng cung cấp mật khẩu')
+    check('username').exists().withMessage('Vui lòng nhập username')
+    .notEmpty().withMessage('Username không được để trống')
+    .custom(value => !/\s/.test(value)).withMessage('Username không được có khoảng trắng'),
+    check('password').exists().withMessage('Vui lòng nhập mật khẩu')
     .notEmpty().withMessage('Mật khẩu không được để trống')
-    .isLength({min: 6}).withMessage('Mất khẩu phải có ít nhất 6 ký tự')
-    .isLength({max: 30}).withMessage('Mất khẩu không được quá 30 kí tự')
+    .isLength({ min: 6 }).withMessage('Mật khẩu phải từ 6 kí tự trở lên'),
 ]

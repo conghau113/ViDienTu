@@ -4,7 +4,7 @@ const transactionHistory = new mongoose.Schema({
     username:{
         type: String
     },
-    // nạp tiền: 1, rút tiền: 2, chuyển tiền: 3, nhập tiền: 4, mua thẻ điện thoại: 5
+    // nạp tiền: 1, rút tiền: 2, chuyển tiền: 3, nhận tiền: 4, mua thẻ điện thoại: 5
     typeTransaction: {
         type: Number
     },
@@ -25,8 +25,10 @@ const transactionHistory = new mongoose.Schema({
     telecom:String,
     value: String,
     code: Array,
+    receiver: String,
+    phoneReceiver: String,
     fee:{
-        type: Number
+        type: Number, default: 0
     }
 })
 
